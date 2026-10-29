@@ -1,0 +1,42 @@
+{
+  "stage": "d4",
+  "architecture": "trainable_d4_of_nafnet_wide_shared",
+  "width": 32,
+  "enc_blk_nums": [
+    2,
+    2
+  ],
+  "middle_blk_num": 7,
+  "dec_blk_nums": [
+    2,
+    2
+  ],
+  "epochs": 40,
+  "cosine_t_max": 40,
+  "learning_rate": 7.5e-05,
+  "min_learning_rate": 1e-06,
+  "batch_size": 2,
+  "seed": 4246,
+  "patch_size": 256,
+  "amp_dtype": "bfloat16",
+  "loss": "mean_log_per_image_mse",
+  "ema_decay": 0.999,
+  "weight_decay": 0.0001,
+  "betas": [
+    0.9,
+    0.999
+  ],
+  "eps": 1e-08,
+  "clip_grad_norm": 1.0,
+  "workers": 0,
+  "cache_images": true,
+  "source_stage": "native",
+  "source_epoch": 300,
+  "profile": "strict",
+  "compile_train": false,
+  "deterministic_algorithms": true,
+  "independent_sampler": true,
+  "optimizer_foreach": false,
+  "optimizer_fused": false,
+  "clip_foreach": false
+}

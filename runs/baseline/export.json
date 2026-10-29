@@ -1,0 +1,10 @@
+{
+  "checkpoint": "/mnt/sdb/qingyang/image-restoration-challenge/runs/baseline/best.pt",
+  "checkpoint_sha256": "bda8faf93eb115d26658740488c306f4d45008a6b522ebe1a39bd506b2dbbffe",
+  "epoch": 39,
+  "weights_source": "ema",
+  "trainable_parameters": 286563,
+  "stored_onnx_elements": 286942,
+  "onnx": "/mnt/sdb/qingyang/image-restoration-challenge/submission/model.onnx",
+  "onnx_sha256": "50bab59c8dad66cbef1a1a0104274078f2203e7b1043e8a3e32544789b75eaab"
+}

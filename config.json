@@ -1,12 +1,92 @@
 {
-  "seed": 42,
-  "epochs": 40,
-  "batch_size": 4,
-  "patch_size": 128,
-  "learning_rate": 0.001,
-  "width": 8,
-  "depth": 3,
-  "device": "auto",
+  "architecture": "shared_nafnet_d4",
+  "stage": "d4",
+  "width": 32,
+  "enc_blk_nums": [
+    2,
+    2
+  ],
+  "middle_blk_num": 7,
+  "dec_blk_nums": [
+    2,
+    2
+  ],
+  "patch_size": 256,
+  "loss": "mean_log_per_image_mse",
+  "ema_decay": 0.999,
+  "weight_decay": 0.0001,
+  "betas": [
+    0.9,
+    0.999
+  ],
+  "eps": 1e-08,
+  "clip_grad_norm": 1.0,
   "workers": 0,
-  "cache_images": true
+  "cache_images": true,
+  "optimizer_foreach": false,
+  "optimizer_fused": false,
+  "clip_foreach": false,
+  "gpu": 0,
+  "threads": 4,
+  "log_every_batches": 10,
+  "deterministic_algorithms": true,
+  "independent_sampler": true,
+  "compile_train": false,
+  "profile": "strict",
+  "data_files_sha256": "28ec118290ec05f3122b5046bdf84a5a8141b9a7c6bc27c749e9964f55543a0d",
+  "stages": {
+    "scratch": {
+      "architecture": "shared_nafnet",
+      "epochs": 150,
+      "cosine_t_max": 300,
+      "learning_rate": 0.001,
+      "min_learning_rate": 1e-05,
+      "batch_size": 4,
+      "seed": 42,
+      "amp_dtype": null,
+      "source_stage": null,
+      "source_epoch": null
+    },
+    "native": {
+      "architecture": "shared_nafnet",
+      "epochs": 150,
+      "cosine_t_max": 150,
+      "learning_rate": 0.0005,
+      "min_learning_rate": 2e-06,
+      "batch_size": 4,
+      "seed": 42,
+      "amp_dtype": null,
+      "source_stage": "scratch",
+      "source_epoch": 150
+    },
+    "d4": {
+      "architecture": "shared_nafnet_d4",
+      "epochs": 30,
+      "cosine_t_max": 30,
+      "learning_rate": 7.5e-05,
+      "min_learning_rate": 1e-06,
+      "batch_size": 2,
+      "seed": 4246,
+      "amp_dtype": "bfloat16",
+      "source_stage": "native",
+      "source_epoch": 150
+    }
+  },
+  "reference_environment": {
+    "python": "3.10.12",
+    "torch": "2.7.1+cu126",
+    "numpy": "1.26.4",
+    "Pillow": "12.3.0",
+    "onnx": "1.23.2",
+    "onnxruntime": "1.23.2"
+  },
+  "recipe_notes": [
+    "All stages train only on the supplied 1200 pairs; full 120-pair validation selects EMA checkpoints.",
+    "Native loads scratch epoch 150 EMA. D4 loads native epoch 150 EMA.",
+    "Every stage resets optimizer, cosine scheduler and RNG. D4 averages eight inverse-transformed predictions before computing the same loss.",
+    "Scratch stops at epoch 150 of a 300-epoch cosine; 1e-5 is eta_min, not its actual last learning rate.",
+    "Native uses 150 epochs and a 150-epoch cosine schedule; learning rate starts at 5e-4 and eta_min is 2e-6.",
+    "The supplied accepted weights used native 300 epochs and measured 35.51888131008079 dB with the official CPU ONNX evaluator.",
+    "This scratch-150, native-150, D4-30 recipe has not yet been trained; each new run records its own settings and metrics."
+  ]
 }

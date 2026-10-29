@@ -1,0 +1,15 @@
+{
+  "stage": "scratch",
+  "profile": "strict",
+  "completed_epochs": 150,
+  "best_epoch": 150,
+  "best_val_psnr": 34.77261319994058,
+  "best_checkpoint": "best.pt",
+  "last_checkpoint": "last.pt",
+  "seconds_this_invocation": 4491.010436276905,
+  "metric": "FP32 target -> CPU float64 RGB; prediction clamp[0,1]; full120 mean PSNR",
+  "initialization": {
+    "mode": "random",
+    "seed": 42
+  }
+}

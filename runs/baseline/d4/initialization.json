@@ -1,0 +1,19 @@
+{
+  "mode": "previous_stage_ema_only",
+  "checkpoint": "/mnt/sdb/qingyang/image-restoration-challenge/full_reproduction/outputs/gpu0_strict_full_20261027_1516/native/checkpoints/epoch_0300.pt",
+  "sha256": "ee7c1c09bdd230c826bc241e1d836d0447b7cae00162bfbd536e4893001ea968",
+  "source_stage": "native",
+  "source_epoch": 300,
+  "details": {
+    "method": "wrap_pretrained_model_state_dict",
+    "state_dict_prefix": "model.",
+    "loaded_base_keys": 160,
+    "new_parameters": 0,
+    "base_model_class": "WideSharedNAFNet",
+    "self_ensemble_mode": "d4",
+    "transform_count": 8,
+    "forward": "unclipped_batched_mean",
+    "output_clipping": "PSNR metric and ONNX export wrapper only"
+  },
+  "optimizer_scheduler_rng": "reset, not resumed"
+}

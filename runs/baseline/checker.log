@@ -1,0 +1,10 @@
+Checking /mnt/sdb/qingyang/image-restoration-challenge/full_reproduction/outputs/gpu0_strict_full_20261027_1516/evaluation/model.onnx...
+Stored model tensor elements: 286,942 / 300,000
+Checking CPU inference (zero / one / random)...
+ONNX checks passed: opset 18, (1, 3, 384, 384), RGB float32
+Validation sample PSNR:
+  000001.png: input 21.378 -> restored 27.494 dB
+  000060.png: input 30.523 -> restored 36.210 dB
+  000120.png: input 27.663 -> restored 33.582 dB
+  Sample mean: 32.428 dB
+SUBMISSION CHECK PASSED (29.48s)

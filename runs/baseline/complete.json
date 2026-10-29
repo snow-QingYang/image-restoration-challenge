@@ -1,0 +1,11 @@
+{
+  "completed": true,
+  "profile": "strict",
+  "stages": [
+    "scratch",
+    "native",
+    "d4"
+  ],
+  "final_checkpoint": "d4/best.pt",
+  "cpu_evaluation": true
+}

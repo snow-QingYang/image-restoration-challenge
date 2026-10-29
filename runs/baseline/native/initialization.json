@@ -1,0 +1,13 @@
+{
+  "mode": "previous_stage_ema_only",
+  "checkpoint": "/mnt/sdb/qingyang/image-restoration-challenge/full_reproduction/outputs/gpu0_strict_full_20261027_1516/scratch/checkpoints/epoch_0150.pt",
+  "sha256": "a8ee36b087b67c71d7833d5c17a272781846d259fbc2003ac9b8a6e5c5029ba7",
+  "source_stage": "scratch",
+  "source_epoch": 150,
+  "details": {
+    "method": "strict_same_architecture_ema",
+    "loaded_keys": 160,
+    "model_class": "WideSharedNAFNet"
+  },
+  "optimizer_scheduler_rng": "reset, not resumed"
+}
